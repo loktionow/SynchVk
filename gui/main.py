@@ -56,11 +56,11 @@ class Main(QtGui.QMainWindow):
     def DownloaderMp3(self,url,artist,song):
         file_name = artist+' - '+song+'.mp3'
         self.ui.label_3.setText('Downloading: %s' % (file_name))
+        file_name = 'music/'+file_name
         if os.path.isfile(file_name):
             self.ui.statusbar.showMessage('file exists')
         else:        
-            u = urllib2.urlopen(url)
-            file_name = 'music/'+file_name
+            u = urllib2.urlopen(url)            
             f = open(file_name, 'wb')
             meta = u.info()
             file_size = int(meta.getheaders("Content-Length")[0])
@@ -98,7 +98,7 @@ class Main(QtGui.QMainWindow):
                 i+=1
             ###################################
 
-            if not os.path.isfile('music/'):
+            if not os.path.exists('music/'):
                 os.mkdir("music", 0770)
                 
 

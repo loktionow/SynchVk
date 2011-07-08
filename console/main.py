@@ -41,11 +41,11 @@ def LoginVk(email,password):
 def DownloaderMp3(url,artist,song):
     file_name = artist+' - '+song+'.mp3'
     print "Downloading: %s" % (file_name)
+    file_name = 'music//'+file_name
     if os.path.isfile(file_name):
         print 'file exists'
     else:        
-        u = urllib2.urlopen(url)
-        file_name = 'music/'+file_name
+        u = urllib2.urlopen(url)        
         f = open(file_name, 'wb')
         meta = u.info()
         file_size = int(meta.getheaders("Content-Length")[0])
@@ -67,7 +67,7 @@ def DownloaderMp3(url,artist,song):
         print 'Done'
 
 def main():
-    page=LoginVk('You@mail.com','youpassword')#login and password
+    page=LoginVk('you@mail.com','youpassword')#login and password
     if page==1 :
         print'connection problem'
     else:            
@@ -86,10 +86,10 @@ def main():
             i+=1
         ###################################
 
-        if not os.path.isfile('music/'):
+        if not os.path.exists('music/'):
             os.mkdir("music", 0770)
 
-        playlist_name = 'music/vkplaylist.m3u' #name playlist
+        playlist_name = 'music//vkplaylist.m3u' #name playlist
         f = open(playlist_name, 'w') #create playlist
             
         i=0
