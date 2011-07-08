@@ -41,7 +41,7 @@ def LoginVk(email,password):
 def DownloaderMp3(url,artist,song):
     file_name = artist+' - '+song+'.mp3'
     print "Downloading: %s" % (file_name)
-    file_name = 'music//'+file_name
+    file_name = 'music/'+file_name
     if os.path.isfile(file_name):
         print 'file exists'
     else:        
@@ -89,7 +89,7 @@ def main():
         if not os.path.exists('music/'):
             os.mkdir("music", 0770)
 
-        playlist_name = 'music//vkplaylist.m3u' #name playlist
+        playlist_name = 'music/vkplaylist.m3u' #name playlist
         f = open(playlist_name, 'w') #create playlist
             
         i=0
